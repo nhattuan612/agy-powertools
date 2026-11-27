@@ -1,410 +1,248 @@
 <div align="center">
   <img src="assets/logo.svg" width="72" height="72" alt="Agy Powertools Logo" />
-  <h1>Agy Powertools</h1>
-  <p><strong>Antigravity 2.0 原生增强插件</strong></p>
-  <p>中文界面、上下文与用量统计、紧凑排版、会话分支与编辑、多账号切换、免 TUN 代理、SSH 与 WSL2 支持</p>
+  <h1>Agy Powertools (Bản Việt hóa)</h1>
+  <p><strong>Plugin mở rộng giao diện nguyên bản cho Antigravity 2.0 - Hỗ trợ đầy đủ Tiếng Việt</strong></p>
+  <p>Giao diện Tiếng Việt &amp; 9 ngôn ngữ khác, thống kê Context &amp; mức sử dụng, bố cục gọn, phân nhánh &amp; sửa tin nhắn, chuyển đổi nhiều tài khoản, Proxy không cần TUN, hỗ trợ SSH &amp; WSL2</p>
   <!-- plugin-badges:start -->
   <p>
-    <a href="https://github.com/WhiteBr1ck/agy-powertools/releases"><img src="https://img.shields.io/github/v/release/WhiteBr1ck/agy-powertools?label=Release&color=2563eb" height="20" alt="Release" /></a>
-    <a href="https://github.com/WhiteBr1ck/agy-powertools/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/WhiteBr1ck/agy-powertools/ci.yml?label=CI" height="20" alt="CI" /></a>
+    <a href="https://github.com/WhiteBr1ck/agy-powertools/releases"><img src="https://img.shields.io/github/v/release/WhiteBr1ck/agy-powertools?label=Upstream&color=2563eb" height="20" alt="Upstream Release" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/github/license/WhiteBr1ck/agy-powertools?label=License&color=16a34a" height="20" alt="MIT License" /></a>
+    <img src="https://img.shields.io/badge/Locale-Ti%E1%BA%BFng%20Vi%E1%BB%87t%20(100%25)-e11d48" height="20" alt="Tiếng Việt" />
     <img src="https://img.shields.io/badge/Antigravity-2.35.0-0f172a" height="20" alt="Antigravity 2.35.0" />
     <img src="https://img.shields.io/badge/Node.js-%3E%3D22.13-339933" height="20" alt="Node.js >= 22.13" />
     <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux%20%7C%20WSL2-475569" height="20" alt="Platform" />
   </p>
   <!-- plugin-badges:end -->
-  <p><strong>简体中文</strong> | <a href="docs/README_ZH_TW.md">繁體中文</a> | <a href="README_EN.md">English</a> | <a href="docs/README_FR.md">Français</a> | <a href="docs/README_JA.md">日本語</a> | <a href="docs/README_KO.md">한국어</a> | <a href="docs/README_DE.md">Deutsch</a> | <a href="docs/README_ES.md">Español</a> | <a href="docs/README_RU.md">Русский</a> | <a href="docs/README_VI.md">Tiếng Việt</a></p>
+  <p><a href="https://github.com/WhiteBr1ck/agy-powertools/blob/main/README.md">简体中文 (Gốc)</a> | <a href="docs/README_ZH_TW.md">繁體中文</a> | <a href="README_EN.md">English</a> | <a href="docs/README_FR.md">Français</a> | <a href="docs/README_JA.md">日本語</a> | <a href="docs/README_KO.md">한국어</a> | <a href="docs/README_DE.md">Deutsch</a> | <a href="docs/README_ES.md">Español</a> | <a href="docs/README_RU.md">Русский</a> | <strong>Tiếng Việt</strong></p>
   <p>
-    <a href="#界面预览">界面预览</a> |
-    <a href="#主要功能">主要功能</a> |
-    <a href="#安装与卸载">安装与卸载</a> |
-    <a href="#配置说明">配置说明</a> |
-    <a href="#更新日志">更新日志</a>
+    <a href="#cai-dat-nhanh">Cài đặt nhanh</a> |
+    <a href="#anh-chup-man-hinh">Ảnh chụp màn hình</a> |
+    <a href="#tinh-nang">Tính năng</a> |
+    <a href="#cau-hinh">Cấu hình</a> |
+    <a href="#lich-su-phien-ban">Lịch sử phiên bản</a>
   </p>
 </div>
 
 <p align="center">
-  <img src="docs/images/hero-workspace.png" alt="Agy Powertools 使用界面" width="100%" />
+  <img src="docs/images/hero-workspace.png" alt="Giao diện làm việc Agy Powertools" width="100%" />
 </p>
 
-> 通过本机调试接口挂载在 Antigravity 2.0 内部，只读解析本地 SQLite 和 JSONL 会话记录，不修改客户端安装文件，也不打开外部网页。
+> **Giới thiệu bản Fork Việt hóa:** Đây là nhánh phát triển bổ sung gói ngôn ngữ **Tiếng Việt hoàn chỉnh (`lib/locales/vi.mjs` - hơn 2.300 chuỗi)** trên nền mã nguồn gốc [WhiteBr1ck/agy-powertools](https://github.com/WhiteBr1ck/agy-powertools) (giấy phép MIT).
+> - Gắn vào Antigravity 2.0 qua giao diện debug cục bộ và đọc các tệp session SQLite/JSONL ở chế độ **chỉ đọc**, không sửa file cài đặt gốc của ứng dụng.
+> - **Lưu ý khi dùng bản Fork này:** Không bấm cập nhật tự động (In-app Update) trong Settings, vì bản phát hành từ repo gốc hiện chưa có sẵn gói Tiếng Việt và sẽ ghi đè bản dịch cục bộ.
 
 ---
 
-## 界面预览
+<a id="cai-dat-nhanh"></a>
+## Cài đặt nhanh & Bật Tiếng Việt
+
+> Yêu cầu: Đã cài và mở Antigravity ít nhất một lần. Sử dụng Node.js cục bộ `>= 22.13` hoặc tự động dùng `agy-node` đi kèm Antigravity. Không cần `npm install` hay quyền quản trị viên.
+
+### Bước 1: Tải và cài đặt từ nhánh này
+
+```sh
+# macOS / Linux / WSL2
+git clone -b vi https://github.com/nhattuan612/agy-powertools.git
+cd agy-powertools
+sh ./install.sh
+```
+
+```powershell
+# Windows (PowerShell)
+git clone -b vi https://github.com/nhattuan612/agy-powertools.git
+cd agy-powertools
+powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+*(Hoặc tải file ZIP nhánh `vi` trên GitHub, giải nén rồi chạy `./install.sh` hoặc `install.ps1`.)*
+
+### Bước 2: Chuyển giao diện sang Tiếng Việt
+
+1. Khởi động lại Antigravity (trên macOS, plugin sẽ tự khởi động lại 1 lần kèm cờ debug nếu bạn mở app trực tiếp).
+2. Mở mục **Powertools** ở thanh bên trái -> chọn tab **Settings** -> tìm mục **Language** -> chọn **Tiếng Việt**.
+3. Toàn bộ giao diện Powertools và các menu/hộp thoại thường dùng của Antigravity sẽ chuyển sang Tiếng Việt ngay lập tức.
+
+### Gỡ cài đặt
+
+- Chạy `sh ./uninstall.sh` (macOS / Linux / WSL2) hoặc `powershell -NoProfile -ExecutionPolicy Bypass -File .\uninstall.ps1` (Windows). Thêm `--keep-settings` nếu muốn giữ lại cấu hình đã lưu. Lịch sử chat, tài khoản và các plugin khác hoàn toàn không bị ảnh hưởng.
+
+---
+
+<a id="anh-chup-man-hinh"></a>
+## Ảnh chụp màn hình
 
 <table>
   <tr>
-    <th width="50%">上下文窗口与生成速度</th>
-    <th width="50%">右侧任务进度与当前额度</th>
+    <th width="50%">Context Window &amp; Thống kê tốc độ</th>
+    <th width="50%">Tiến độ tác vụ &amp; Quota trong Overview</th>
   </tr>
   <tr>
     <td>
-      <img src="docs/images/card-composer.png" alt="上下文窗口与生成速度" width="100%" />
-      <p>在输入框旁查看上下文占用、缓存复用和实时生成速度；外框可选显示当前模型的剩余额度。</p>
+      <img src="docs/images/card-composer.png" alt="Context window và thống kê tốc độ" width="100%" />
+      <p>Xem mức dùng Context, tỷ lệ tái sử dụng Cache và tốc độ sinh token ngay cạnh bộ chọn model, kèm tùy chọn vòng Quota bao quanh khung nhập liệu.</p>
     </td>
     <td>
-      <img src="docs/images/card-overview-panel.png" alt="右侧任务进度与当前额度" width="100%" />
-      <p>在右侧概览查看当前运行阶段、每步耗时和各模型组剩余额度，点击标题可折叠收起。</p>
-    </td>
-  </tr>
-  <tr>
-    <th>用量概览（浅色）</th>
-    <th>用量概览（深色）</th>
-  </tr>
-  <tr>
-    <td>
-      <img src="docs/images/card-dashboard-light.png" alt="用量概览浅色主题" width="100%" />
-      <p>默认按本轮周限额周期统计请求次数、Token、缓存命中率、参考费用、53 周热力图和模型健康状态。</p>
-    </td>
-    <td>
-      <img src="docs/images/card-dashboard-dark.png" alt="用量概览深色主题" width="100%" />
-      <p>随客户端切换浅色和深色主题，对比各模型的 Token 与费用占比、缓存命中率和平均速度。</p>
+      <img src="docs/images/card-overview-panel.png" alt="Tiến độ tác vụ và Quota trong Overview" width="100%" />
+      <p>Theo dõi từng bước thực thi trực tiếp, thời gian mỗi bước và Quota model còn lại ở bảng Overview bên phải; nhấn vào tiêu đề mục để thu gọn.</p>
     </td>
   </tr>
   <tr>
-    <th>请求记录与缓存异常</th>
-    <th>多账号切换与额度（默认关闭）</th>
+    <th>Tổng quan sử dụng (Giao diện Sáng)</th>
+    <th>Tổng quan sử dụng (Giao diện Tối)</th>
   </tr>
   <tr>
     <td>
-      <img src="docs/images/card-requests.png" alt="请求记录与缓存异常" width="100%" />
-      <p>按账号、模型、会话和状态筛选单次请求，标出短间隔内异常掉缓存的记录，排除冷启动与上下文压缩误报。</p>
+      <img src="docs/images/card-dashboard-light.png" alt="Tổng quan sử dụng ở giao diện sáng" width="100%" />
+      <p>Mặc định hiển thị theo chu kỳ Quota tuần hiện tại, gồm số request, Token, tỷ lệ cache hit, chi phí ước tính, biểu đồ nhiệt 53 tuần và tình trạng từng model.</p>
     </td>
     <td>
-      <img src="docs/images/card-accounts.png" alt="多账号切换与额度管理" width="100%" />
-      <p>通过系统凭据管理器本地保存和切换多个 Google 账号，集中查看 5 小时和周限额。</p>
+      <img src="docs/images/card-dashboard-dark.png" alt="Tổng quan sử dụng ở giao diện tối" width="100%" />
+      <p>Tự động đồng bộ giao diện sáng/tối của ứng dụng, so sánh tỷ trọng Token, chi phí, tỷ lệ cache hit và tốc độ giữa các model.</p>
     </td>
   </tr>
   <tr>
-    <th>多语言与显示设置</th>
-    <th>免 TUN 独立代理（默认关闭）</th>
+    <th>Danh sách Request &amp; Bất thường Cache</th>
+    <th>Đa tài khoản &amp; Quản lý Quota (Mặc định tắt)</th>
   </tr>
   <tr>
     <td>
-      <img src="docs/images/card-settings.png" alt="多语言与显示设置" width="100%" />
-      <p>支持九种界面语言切换，包含紧凑排版、用户消息底色和额度边框周期等选项。</p>
+      <img src="docs/images/card-requests.png" alt="Danh sách request và cảnh báo bất thường cache" width="100%" />
+      <p>Lọc request theo tài khoản, model, hội thoại và trạng thái; gắn cờ các lần rớt Cache bất thường trong khoảng thời gian ngắn (bỏ qua cold start và compaction).</p>
     </td>
     <td>
-      <img src="docs/images/card-proxy.png" alt="免 TUN 独立代理设置" width="100%" />
-      <p>单独为 Antigravity 配置 HTTP 或 SOCKS5 代理，内置连通性测试、强制 HTTP/1.1 与应用内检查更新。</p>
+      <img src="docs/images/card-accounts.png" alt="Chuyển đổi nhiều tài khoản và quản lý Quota" width="100%" />
+      <p>Lưu và chuyển đổi nhiều tài khoản Google cục bộ qua kho khóa bảo mật của hệ điều hành, xem Quota 5 giờ và theo tuần tại một nơi.</p>
+    </td>
+  </tr>
+  <tr>
+    <th>Cài đặt Ngôn ngữ &amp; Hiển thị</th>
+    <th>Proxy không cần TUN (Mặc định tắt)</th>
+  </tr>
+  <tr>
+    <td>
+      <img src="docs/images/card-settings.png" alt="Cài đặt ngôn ngữ và hiển thị" width="100%" />
+      <p>Hỗ trợ 10 ngôn ngữ giao diện, bật/tắt bố cục gọn, tô màu bong bóng tin nhắn người dùng và vòng viền Quota.</p>
+    </td>
+    <td>
+      <img src="docs/images/card-proxy.png" alt="Cài đặt Proxy riêng không cần TUN" width="100%" />
+      <p>Định tuyến riêng Antigravity qua HTTP hoặc SOCKS5 kèm kiểm tra kết nối tích hợp, ép HTTP/1.1 và xác minh cập nhật trong ứng dụng.</p>
     </td>
   </tr>
 </table>
 
 ---
 
-## 主要功能
+<a id="tinh-nang"></a>
+## Tính năng
 
-- **九种界面语言**：翻译 Antigravity 常用侧栏、菜单、权限弹窗、模型说明、设置页和 Swarm 面板，不改动聊天正文与代码块。
-- **上下文与速度统计**：在输入框旁查看上下文窗口占用（含缓存复用、压缩次数和 Orchestrator 规划/执行分模型进度）以及生成速度（`tok/s`、首字延迟、模型/工具耗时和本会话参考费用），支持子智能体统计。
-- **本地用量与请求看板**：左侧栏新增 `Powertools` 页面，合并统计桌面端与 `agy` CLI 用量，包含用量概览（热力图、模型分布、参考费用）、请求记录、短间隔缓存异常标红、报错一键复制、配额估算和官方参考单价拉取。
-- **紧凑排版与阶段汇报**：保留客户端字号，收紧正文行高和段落间距；Agent 连续调用工具时先简要汇报进度，整轮完成后自动折进顶部用时栏。
-- **会话分支与消息编辑**：可从任意历史回答或会话菜单分支出新会话（完整保留历史，支持含子智能体的会话）；点击已发消息旁的编辑按钮可直接在原位置修改重发。
-- **多账号切换（默认关闭）**：基于 Windows 凭据管理器、macOS 钥匙串或 Linux Secret Service 本地隔离多个 Google 账号，不落明文令牌；侧栏底部可直接看额度、切号，支持耗尽自动切号。
-- **免 TUN 独立代理（默认关闭）**：无需开启系统全局代理，单独给 Antigravity 注入代理参数和环境变量；内置连通性测试、冷启动未启用提醒，以及可选 `GODEBUG=http2client=0` 缓解 `EOF` 断连。
-- **SSH 远程与 WSL2 支持**：桌面端连 `SSH` 远端窗口时直接读取远端会话与用量统计，不需要在服务器装插件；Windows Antigravity 开启内置 WSL2 模式时，自动处理跨系统 CDP 连接（兼容 NAT 和 Mirrored）、多账号凭据与重启。
-- **文件右键与其他实用项**：右键消息中的文件链接或右侧文件树可引用到输入框、打开、定位文件夹、复制文件或复制路径（Windows 支持局域网 NAS 共享路径）；右侧概览支持可折叠的任务进度与当前额度，另提供窗口标题未读数、可选输入框额度边框和用户气泡底色。
+- **Giao diện đa ngôn ngữ (10 ngôn ngữ)**: Việt hóa đầy đủ (1.611 nhãn giao diện gốc, 589 chuỗi bảng điều khiển, 145 mẫu động, 39 chuỗi Sidecar) cho Powertools, menu thường dùng của Antigravity, hộp thoại cấp quyền, cài đặt và iframe Swarm, giữ nguyên nội dung chat và khối code.
+- **Đo lường Context và tốc độ**: Thêm vòng tròn sử dụng Context (kèm tỷ lệ tái sử dụng Cache, số lần nén và thanh planner/executor của Orchestrator) cùng đồng hồ tốc độ (`tok/s`, TTFT, thời gian model vs tool, chi phí phiên ước tính) ngay cạnh khung nhập, bao gồm cả thống kê Subagent.
+- **Dashboard sử dụng và log Request cục bộ**: Thêm trang `Powertools` ở thanh bên kết hợp dữ liệu Desktop và `agy` CLI, gồm tổng quan sử dụng (biểu đồ nhiệt 53 tuần, biểu đồ tròn Token/chi phí, bảng model), nhật ký từng request, cờ bất thường Cache, nút copy lỗi 1 chạm, ước tính Quota và làm mới bảng giá API chính thức.
+- **Bố cục gọn và cập nhật theo giai đoạn**: Giữ nguyên cỡ chữ của ứng dụng trong khi tinh chỉnh giãn dòng và khoảng cách khối; hiển thị tiến độ ngắn gọn trong lượt chạy nhiều bước và tự gập vào tiêu đề thời gian xử lý khi hoàn tất.
+- **Phân nhánh hội thoại và sửa tin nhắn tại chỗ**: Tạo nhánh (fork) hội thoại mới từ bất kỳ phản hồi hoặc menu hội thoại nào với đầy đủ lịch sử (kể cả hội thoại có Subagent), hoặc sửa trực tiếp tin nhắn đã gửi ngay trên khung nhập nguyên bản của Antigravity.
+- **Chuyển đổi nhiều tài khoản (mặc định tắt)**: Dùng Windows Credential Manager, macOS Keychain hoặc Linux Secret Service để cô lập nhiều tài khoản Google không lưu token văn bản thuần; theo dõi Quota 5 giờ / tuần ở thanh bên và tùy chọn tự chuyển khi cạn Quota.
+- **Proxy riêng cho ứng dụng không cần TUN (mặc định tắt)**: Tiêm cờ Proxy và biến môi trường chỉ cho Antigravity khi khởi động lại, hỗ trợ kiểm tra HTTP CONNECT / SOCKS5, nhắc khi cold-start và tùy chọn `GODEBUG=http2client=0` để giảm lỗi ngắt `EOF`.
+- **Hỗ trợ SSH Remote và WSL2**: Đọc dữ liệu phiên từ xa, Subagent và thống kê trên cửa sổ `SSH` qua OpenSSH cục bộ mà không cần cài gì lên server; hỗ trợ Antigravity trên Windows kết hợp WSL2 ở cả chế độ mạng NAT và Mirrored.
+- **Menu chuột phải cho tệp và tiện ích nhỏ**: Chuột phải vào liên kết tệp hoặc cây Files để đính kèm vào chat, mở, mở thư mục chứa, sao chép tệp hoặc đường dẫn (kể cả đường dẫn NAS / SMB LAN trên Windows); bổ sung các mục thu gọn Tiến độ tác vụ & Quota trong Overview, bộ đếm chưa đọc trên thanh tiêu đề, vòng Quota và tô màu tin nhắn người dùng.
 
 ---
 
-## 没什么用的功能（但很帅）
+## Tính năng vui (Nhưng đẹp mắt)
 
 <p align="center">
-  <img src="docs/images/card-border-beam.webp" alt="工作时输入框流光预览" width="100%" />
+  <img src="docs/images/card-border-beam.webp" alt="Hiệu ứng dải sáng viền khung nhập khi đang xử lý" width="100%" />
 </p>
 
-- **工作时输入框流光（默认关闭）**：灵感来自 [border-beam-ios](https://github.com/ismnoiet/border-beam-ios)，基于圆角矩形 SDF 的轻量 WebGL 着色器。Agent 工作时沿输入框边缘匀速旋转；内置 `Gemini`、`极光`、`炫彩`、`霓虹`、`主题色`、`额度色` 6 套主题。
+- **Dải sáng viền khung nhập khi đang xử lý (mặc định tắt)**: Lấy cảm hứng từ [border-beam-ios](https://github.com/ismnoiet/border-beam-ios), dùng shader WebGL SDF bo góc nhẹ. Tạo vệt sáng mượt chạy đều quanh khung nhập liệu khi agent đang làm việc và mờ dần về 0% tải CPU/GPU khi lượt chạy kết thúc. Chuyển mượt với vòng viền Quota khi bật cả hai, kèm 6 bảng màu (`Gemini`, `Aurora`, `Colorful`, `Neon`, `Accent`, `Quota`) và nút **Thử xem trước** trong Cài đặt.
 
 ---
 
-## 安装与卸载
+<a id="cau-hinh"></a>
+## Cấu hình
 
-> 环境要求：先安装并启动过一次 Antigravity。优先使用本机 Node.js `>= 22.13`，没有时自动使用客户端自带的 `agy-node`，无需 `npm install` 或管理员权限。
-
-### 方式一：发给 Agent 自动安装（推荐）
-
-把下面这段话直接发给 Antigravity 或其他可执行本地命令的 Agent：
-
-> 请帮我安装 Agy Powertools：https://github.com/WhiteBr1ck/agy-powertools 。先阅读 README 和 docs/INSTALL_AGENT.md，使用项目提供的统一安装器，优先使用已有 Node.js 或 Antigravity 自带运行环境。保留其他插件、账户设置和聊天记录，不要强制退出当前客户端。安装后核对版本并告诉我结果；需要重启时最后提醒我。
-
-详细步骤见 [Agent 安装指南](docs/INSTALL_AGENT.md)。
-
-### 方式二：命令行安装
-
-从 [Releases](https://github.com/WhiteBr1ck/agy-powertools/releases) 下载最新 ZIP 解压（或克隆本仓库），在项目目录运行：
-
-```powershell
-# Windows (PowerShell)
-powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
-```
-
-```sh
-# macOS / Linux / WSL2
-sh ./install.sh
-```
-
-覆盖安装会保留已有设置，不会强制关闭客户端。完成当前任务后重启 Antigravity，左侧栏出现 **Powertools** 即可使用。macOS 无需创建第二个 `.app` 图标，正常打开原版 Antigravity 时若未检测到调试端口，插件会自动带参数重启一次生效（内置防循环保护，亦可在设置或右侧「插件 -> Powertools」关闭自动重启并改为手动点击重启）。
-
-### 更新与卸载
-
-- **应用内更新**：打开 **Powertools -> 设置 -> 关于 -> 检查更新**，点击 **立即更新** 自动完成 SHA-256 校验与替换，启动失败会自动回滚旧版。
-- **卸载**：运行 `powershell -NoProfile -ExecutionPolicy Bypass -File .\uninstall.ps1`（Windows）或 `sh ./uninstall.sh`（macOS / Linux / WSL2）。末尾加 `--keep-settings` 可保留个人配置。卸载不会影响原有聊天记录、账号和其他插件。
-
----
-
-## 配置说明
-
-所有选项都在 **Powertools -> 设置** 里实时生效并自动保存（底部支持恢复默认设置）。
+Mọi thiết lập áp dụng trực tiếp trong **Powertools -> Cài đặt** và tự động lưu (**Khôi phục mặc định** nằm ở cuối trang). Xem hướng dẫn cài qua Agent tại [docs/INSTALL_AGENT.md](docs/INSTALL_AGENT.md).
 
 <details>
-<summary><strong>展开查看全部设置项、环境变量与数据目录</strong></summary>
+<summary><strong>Mở rộng toàn bộ danh sách cài đặt, biến môi trường và đường dẫn</strong></summary>
 
-### 界面与显示
+### Giao diện & hiển thị
 
-| 配置项 | 默认值 | 说明 |
+| Thiết lập | Mặc định | Mô tả |
 | --- | --- | --- |
-| 启用 Powertools | 开启 | 插件总开关；关闭后暂停所有界面增强，保留已保存设置 |
-| 语言 | `简体中文` | 可选九种界面语言 |
-| 本地字体与字重 | 跟随客户端 | 按中文名或字体族名搜索，选择后立即生效。字重可独立设置，恢复默认会同时清除两项设置。内置终端沿用客户端字体 |
-| 紧凑排版 | 开启 | 收紧行高至 `1.4`、段落间距与工具行高，字号跟随客户端设置 |
-| 用户消息气泡着色 | 关闭 | 为用户发出的消息添加底色和细边框，支持强调色、5 套预设、自定义颜色与 10%-100% 混合强度滑条 |
-| 始终显示会话目录 | 开启 | 在多轮对话左侧常驻显示轮次跳转目录 |
-| 切换会话时保持概览 | 开启 | 切换会话时保持右侧概览面板的展开状态 |
-| 项目默认显示会话数 | `默认 (6)` | 控制侧栏每个项目默认展示条数（`默认 (6)` / `1-10` / `全部展开`） |
-| 拖入文件夹创建项目 | 开启 | 将本地文件夹拖到侧栏以创建或打开项目。仅限本地窗口 |
-| 拖入项目自动置顶 | 关闭 | 置顶通过拖放创建或打开的项目 |
-| 侧栏运行中会话流光 | 关闭 | 围绕侧栏运行中会话框显示沿圆角边缘匀速移动的 SVG 光带（默认跟随输入框配色，亦可独立配色、隐藏原生四圆点动画或试用预览；待确认态自动切为琥珀提示色） |
-| 侧栏进行中会话监控分组 | 关闭 | 在侧栏顶部置顶集中展示所有进行中的会话、所属项目、活跃子任务与等待确认提醒，支持折叠与暂停动效，无运行会话时自动隐藏 |
-| 任务栏未读提醒 | 开启 | 后台对话完成时在窗口和任务栏标题前显示 `(N)` 未读数，切回后消除 |
+| Bật Powertools | Bật | Công tắc tổng; tạm dừng mọi mở rộng giao diện mà vẫn giữ cấu hình đã lưu |
+| Ngôn ngữ | `简体中文` | Chọn một trong 10 ngôn ngữ giao diện (bao gồm `Tiếng Việt`) |
+| Phông chữ và độ đậm cục bộ | Mặc định app | Tìm theo tên bản địa hoặc họ font để áp dụng; chỉnh độ đậm riêng; đặt lại để về mặc định; Terminal vẫn dùng font riêng |
+| Bố cục gọn | Bật | Giảm chiều cao dòng (`1.4`) và khoảng cách khối/tool trong khi giữ nguyên cỡ chữ |
+| Tô màu bong bóng tin nhắn người dùng | Tắt | Thêm nền màu và viền cho tin nhắn người dùng (Accent, 5 mẫu màu, màu tùy chỉnh và thanh trượt độ đậm 10%-100%) |
+| Luôn hiện thanh điều hướng hội thoại | Bật | Giữ thanh nhảy giữa các lượt trong hội thoại nhiều lượt luôn hiển thị |
+| Giữ mở Overview khi chuyển hội thoại | Bật | Lưu trạng thái mở/đóng bảng Overview bên phải khi chuyển đổi chat |
+| Số hội thoại mỗi dự án | `Mặc định (6)` | Điều chỉnh số chat hiển thị mỗi dự án ở thanh bên (`Mặc định (6)`, `1-10`, hoặc `Hiện tất cả`) |
+| Kéo thả thư mục vào thanh bên | Bật | Tạo hoặc mở dự án bằng cách kéo thả thư mục cục bộ vào thanh bên |
+| Ghim dự án vừa kéo thả | Tắt | Tự động ghim các dự án được tạo hoặc mở qua thao tác kéo thả |
+| Dải sáng chạy trên thanh bên | Tắt | Vẽ vệt sáng SVG chạy quanh khung hội thoại đang chạy ở thanh bên (hỗ trợ ẩn vòng quay 4 chấm gốc, cảnh báo màu hổ phách khi chờ xác nhận) |
+| Nhóm hội thoại đang chạy | Tắt | Ghim mục Đang chạy thu gọn được ở đầu thanh bên hiển thị tất cả chat, dự án, Subagent đang hoạt động và cảnh báo chờ xác nhận |
+| Huy hiệu chưa đọc trên thanh tiêu đề | Bật | Hiện số `(N)` chưa đọc trên tiêu đề cửa sổ/thanh tác vụ khi chat chạy nền hoàn tất |
 
-### 统计与进度
+### Đo lường & tiến độ
 
-| 配置项 | 默认值 | 说明 |
+| Thiết lập | Mặc định | Mô tả |
 | --- | --- | --- |
-| 概览默认时间范围 | `本轮周限额内用量` | 可选本轮周限额内用量、今天、24 小时、昨天、本周、本月、30 天或全部时间 |
-| 上下文圆环 | 开启 | 在输入框旁显示上下文占用圆环、缓存复用和 Orchestrator 分模型拆解 |
-| 速度与统计 | 开启 | 显示生成速度码表，点击查看会话统计与参考费用 |
-| 任务进度 | 开启 | 在右侧概览显示可折叠的任务清单、运行阶段与步骤耗时 |
-| 概览显示账号额度 | 关闭 | 在右侧概览底部以可折叠区块显示各模型组的 5 小时和周剩余额度 |
-| 标题栏快捷概览 | 关闭 | 开启后在窗口右上角标题栏显示 Powertools 快捷浮窗入口，无需离开当前会话即可查看与管理全部面板 |
-| 输入框额度光环 | 关闭 | 沿输入框外框顺时针显示当前所选模型的剩余额度（绿 / 琥珀 / 红） |
-| 光环额度周期 | `自动（较低项）` | 开启光环后可选 `自动（较低项）`、`周限额` 或 `5 小时限额` |
-| 工作时输入框流光 | 关闭 | Agent 工作时沿输入框边框平滑旋转流光光环（空闲淡出零占用）；与额度光环同时开启时自动无缝切换，内置 6 套色板与「试用预览」按钮 |
-| 子智能体上下文与统计 | 开启 | 在概览子智能体列表、子智能体输入框和主会话浮窗显示子智能体统计 |
-| 每轮用时 / 点击展开工具 | 开启 | 在已完成回复顶部显示总耗时，点击展开工具调用与阶段汇报 |
-| 每轮底栏统计 | 关闭 | 在已完成回复底部显示当轮模型、缓存命中率、输入/输出 Token 和预估费用，悬停查看完整明细 |
+| Khoảng thời gian Overview mặc định | `Quota tuần hiện tại` | Chọn chu kỳ Quota tuần, Hôm nay, 24h, Hôm qua, Tuần này, Tháng này, 30 ngày, hoặc Toàn bộ |
+| Vòng tròn Context | Bật | Hiển thị vòng mức dùng Context, chi tiết tái sử dụng Cache và thanh theo từng model của Orchestrator |
+| Tốc độ & thống kê | Bật | Hiển thị đồng hồ tốc độ và mở chi tiết thống kê phiên kèm chi phí ước tính |
+| Tiến độ tác vụ | Bật | Mục thu gọn trong Overview hiển thị danh sách kiểm tra, giai đoạn hiện tại và thời lượng từng bước |
+| Hiện Quota trong Overview | Tắt | Mục thu gọn trong Overview hiển thị Quota 5 giờ và hàng tuần còn lại |
+| Mở nhanh Overview ở thanh tiêu đề | Tắt | Thêm nút Powertools ở góc trên bên phải để mở popover 6 tab ngay trên hội thoại hiện tại |
+| Vòng viền Quota quanh khung nhập | Tắt | Vẽ vòng Quota còn lại theo chiều kim đồng hồ quanh khung nhập (xanh ngọc, hổ phách hoặc đỏ) |
+| Cửa sổ vòng Quota | `Tự động (thấp hơn)` | Chọn `Tự động (thấp hơn)`, `Giới hạn tuần` hoặc `Giới hạn 5 giờ` khi bật vòng Quota |
+| Dải sáng viền khung nhập khi xử lý | Tắt | Chạy hiệu ứng dải sáng mượt quanh khung nhập khi đang xử lý (0% tải khi nghỉ), chuyển mượt với vòng Quota, có 6 bảng màu & Xem trước |
+| Context & thống kê Subagent | Bật | Hiển thị model, mức dùng Context, Token, tỷ lệ cache hit, tốc độ và chi phí cho từng Subagent |
+| Thời lượng lượt chạy / Mở rộng tool | Bật | Hiển thị tổng thời gian ở lượt đã xong và nhấn để mở rộng chi tiết tool |
+| Thống kê cuối mỗi lượt trả lời | Tắt | Hiện model, tỷ lệ cache hit, Token vào/ra và chi phí ước tính ở chân phản hồi, rê chuột để xem chi tiết |
 
-### 会话增强、账号、代理与实验性上下文
+### Tính năng mở rộng, Tài khoản, Proxy & Context thử nghiệm
 
-| 配置项 | 默认值 | 说明 |
+| Thiết lập | Mặc định | Mô tả |
 | --- | --- | --- |
-| 阶段汇报 | 开启 | 工作时汇报当前进展，整轮完成后收进顶部用时栏 |
-| 并行检索与读取 | 关闭 | 引导 Agent 在同一轮合并搜索和读取文件，减少来回轮次 |
-| 原生搜索支持全文检索 | 开启 | 增强顶部原生放大镜搜索，在搜标题的同时检索历史对话正文、代码块与终端命令，点击直达对应轮次 |
-| 分支会话 / 消息编辑 / 文件右键 | 开启 | 原生会话分支、原位消息编辑和本地 / NAS / 文件树右键菜单（含「打开方式 >」本机应用与 `#L:C` 跳转） |
-| 识别粘贴的 SSH 命令 | 开启 | 在「新建项目 -> SSH Host」粘贴 `ssh -p 端口 用户@主机` 时自动填入 `用户@主机:端口`（自动忽略密码） |
-| 启用多账号切换 | 关闭 | 需确认风险提示；含侧栏切换器、列表/卡片视图、5H/周周期与耗尽自动切号 |
-| 启用独立代理（免 TUN） | 关闭 | 协议 / 主机 / 端口输入、连通性测试、冷启动提醒和强制 HTTP/1.1 |
-| 上下文目标（实验性） | `默认` | 可选 `默认`、`256K`、`500K`、`1M`；`默认` 不改动客户端原生设置 |
+| Cập nhật tiến độ theo giai đoạn | Bật | Báo cáo tiến độ ngắn trong lượt chạy tool nhiều bước và gập lại khi xong |
+| Tìm kiếm & đọc song song | Tắt | Hướng dẫn agent gộp nhiều thao tác tìm kiếm và đọc tệp trong một lượt |
+| Tìm kiếm toàn văn trong hộp thoại gốc | Bật | Mở rộng modal tìm kiếm hội thoại gốc để tìm nội dung tin nhắn, khối code, lệnh và nhảy thẳng tới lượt khớp |
+| Phân nhánh / Sửa tin nhắn / Menu tệp | Bật | Phân nhánh hội thoại nguyên bản, sửa tin nhắn tại chỗ và menu chuột phải cho tệp (kèm Mở bằng... và nhảy tới `#L:C`) |
+| Nhận diện lệnh SSH khi dán | Bật | Tự trích xuất `user@host:port` khi dán `ssh -p PORT user@host` vào ô SSH Host (tự loại bỏ mật khẩu đi kèm) |
+| Bật chuyển đổi nhiều tài khoản | Tắt | Cần chủ động bật kèm cảnh báo rủi ro; bộ chuyển ở thanh bên, dạng danh sách/thẻ, xem 5H/tuần và tự chuyển tài khoản |
+| Proxy cho ứng dụng (không cần TUN) | Tắt | Nhập giao thức/host/port, kiểm tra kết nối, nhắc khi cold-start và ép HTTP/1.1 |
+| Mục tiêu Context (Thử nghiệm) | `Mặc định` | Chọn `Mặc định`, `256K`, `500K` hoặc `1M` (`Mặc định` giữ nguyên thiết lập gốc) |
 
-### 环境变量与文件路径
+### Biến môi trường & đường dẫn
 
-| 名称 / 路径 | 说明 |
+| Tên / Đường dẫn | Mô tả |
 | --- | --- |
-| `ANTIGRAVITY_USER_DATA_DIR` | 使用独立客户端配置目录时指定自定义用户数据目录 |
-| `ANTIGRAVITY_CLI_DATA_DIR` | 自定义 `agy` CLI 数据目录路径（默认自动合并 `~/.gemini/antigravity-cli`） |
-| `ANTIGRAVITY_CDP_PORT_FILE` | 显式指定 `DevToolsActivePort` 绝对路径（兼容 `AGY_BROWSER_ACTIVE_PORT_FILE`） |
-| `~/.gemini/config/plugins/agy-powertools/` | 插件程序与运行脚本安装目录 |
-| `~/.gemini/antigravity/plugin_data/agy-powertools/` | 个人设置、账号记录、配额采样和参考单价缓存目录 |
+| `ANTIGRAVITY_USER_DATA_DIR` | Thư mục dữ liệu người dùng Antigravity tùy chỉnh cho profile tách biệt |
+| `ANTIGRAVITY_CLI_DATA_DIR` | Thư mục dữ liệu `agy` CLI tùy chỉnh (mặc định `~/.gemini/antigravity-cli`) |
+| `ANTIGRAVITY_CDP_PORT_FILE` | Đường dẫn chỉ định tới `DevToolsActivePort` (cũng hỗ trợ `AGY_BROWSER_ACTIVE_PORT_FILE`) |
+| `~/.gemini/config/plugins/agy-powertools/` | Thư mục chứa tệp plugin và script thực thi đã cài |
+| `~/.gemini/antigravity/plugin_data/agy-powertools/` | Dữ liệu cài đặt đã lưu, metadata tài khoản, mẫu Quota và bộ nhớ đệm bảng giá |
 
 </details>
 
 ---
 
-## 更新日志
+<a id="lich-su-phien-ban"></a>
+## Lịch sử phiên bản
 
-### v2.16.11
-- **修复 SOCKS5 代理下伴生进程崩溃与重启稳定性（#93，#64）**：移除会令 Node `fetch` 在 SOCKS5 环境下异常的 `NODE_USE_ENV_PROXY`，[pricing.mjs](lib/pricing.mjs) 统一走 `createProxyFetcher()`；Windows 重启 ACK 等待延长至 6 秒并在失败时清理 `lastRelaunchAt`，支持外部代理配置变更自动重启，快捷方式修补改为非阻塞执行，且 4 秒调试端口轮询不再误清 24 小时重启熔断状态。
-- **根治多账号切换后串号/账号错位与 macOS 凭据前缀兼容（#97，#95）**：新增 `refreshHash` 去重与碰撞保护，切号重启仅在当前用户作用域内结束残留 `language_server.exe` 并在退出后动态回填目标凭据与清理 `credential-user-scope`（遇提权进程或临时异常绝不令客户端停在关闭态），补充 `fromLsAddress` 校验与 `switchMismatch` 自愈提示；JS 与 Win32 C# 侧统一解包 macOS `go-keyring-base64:` 前缀。
-- **修复 Windows `.gemini` 联接点更新失败与伴生页更新状态卡死（#96，#100）**：[lifecycle.mjs](lib/lifecycle.mjs) 仅放行 `.gemini` 根目录 NTFS Junction/符号链接并保留子路径安全检查、补充跨卷 `EXDEV` 回退，在“关于”页透出安装报错详情；修复伴生页在更新状态从 `installing` 回到 `idle` 后停留在“正在安装并启动新版本…”的问题。
-- **修复自定义字重下部分标题变细与字宽漂移**：在 [native-ui.js](lib/native-ui.js) 建立单调递增字重阶梯 `--agy-fw-*` 同步覆写宿主 Tailwind `--font-weight-*` 与 `body` 的 `font-variation-settings: normal`，并将面板与侧栏监控样式硬编码字重统一接入 `--agy-fw-*`（关闭自定义字重时保持原默认零变化）。
-- **修复 Node 24 Windows 下扫描二进制 `.lnk` 快捷方式导致的堆损坏崩溃**：将 [launcher.mjs](lib/launcher.mjs) 的 `.lnk` 预检由 `utf16le.toLowerCase()` 改为零分配纯字节扫描（兼容 ASCII 与奇偶偏移 UTF-16LE）。
-- **放宽 `custom-i18n.json` 词条长度上限并吸收三项社区贡献（#94，吸收 PR #98 / PR #86 / PR #83，感谢 `@mutezebra`、`@Nazumeki`、`@Hi-Jiajun`）**：
-  - 将自定义词典单条文本上限由 400 字符提升至 2000 字符（#94）。
-  - 支持将 `file://` 链接末尾 `:line[:col]` 透传至客户端编辑器与 SSH 远端，并处理路径含 `#`、POSIX 真实 `:数字` 文件名与 `:0` 边界（PR #98）。
-  - 设置页统一为 12px 贴边布局并去除重复分割线，侧栏运行态与设置预览升级为 6 色对称流光并调优浅色模式羽化，同时实时同步 `quota` 配色（PR #86）。
-  - 精选吸收 400 条九语种静态 UI 词条并新增 `controlOnlyLabels` 标题保护，修正繁中词表；Overview 面板原生 `title` 升级为作用域感知的自定义主题浮窗（PR #83）。
+### Bản Việt hóa (trên nền v2.16.11)
+- **Bổ sung gói ngôn ngữ Tiếng Việt (`vi`) hoàn chỉnh**: Việt hóa toàn bộ 1.611 chuỗi giao diện gốc Antigravity, 589 chuỗi bảng điều khiển/cài đặt Powertools, 145 pattern động, 39 chuỗi Aux Pane Sidecar, định dạng thời gian tiếng Việt và tài liệu hướng dẫn Tiếng Việt.
+- **Vượt qua toàn bộ kiểm thử tự động**: Toàn bộ test i18n, lifecycle, settings và đóng gói đều đạt chuẩn tương thích với dự án gốc `WhiteBr1ck/agy-powertools`.
 
-### v2.16.10
-- **修复独立代理下 HTTPS 隧道被跳过导致检查更新失败（PR #92，closes #90，感谢 `@qimengdunjia`）**：将 [proxy.mjs](lib/proxy.mjs) 中 `httpsGetThroughProxy` 由 `agent: false` 改为复用绑定 `tlsSocket` 的独立 `https.Agent({ keepAlive: false })`，同步保持响应体流式读取期间的 `AbortSignal` 中止有效与非 HTTPS 跳转防回退，并将 `update.check`、`update.autoCheck`、`update.install` 的前端 RPC 超时对齐至 18 秒。
-- **修复长任务每次工具调用重绘输入框底栏引发的 Windows IME 悬浮窗闪烁（#89）**：将 `composerRingSig` 精简为仅跟踪底栏按钮可见字段（按开关条件门控），同时让展开的上下文窗口与会话统计浮窗直接读取实时状态，既消除无谓重绘又保持弹窗数据实时刷新。
-- **新增个人配置导入与导出功能（#88）**：在「设置」页底部新增「导出配置 / 导入配置」（`agy-powertools-settings.json`），仅导出白名单偏好并自动剥离代理 URL 账密（绝不导出多账号凭据、Token 或本地缓存），保留 `enabled` / `multiAccount` / `autoSwitchAccount` 本机状态；导入时支持向前兼容未知字段、跨系统缺失字体非致命回退默认，并完整适配九种语言错误提示与并发语言包热拉取。
+### v2.16.11 (Upstream)
+- Sửa lỗi crash sidecar khi dùng Proxy SOCKS5 (#93, #64), sửa lỗi lẫn thông tin đăng nhập đa tài khoản và giải mã tiền tố Keyring macOS (#97, #95), hỗ trợ NTFS junction `.gemini` trên Windows (#96, #100), sửa độ đậm font tùy chỉnh, sửa lỗi Node 24 quét `.lnk`, nâng giới hạn `custom-i18n.json` lên 2000 ký tự và gộp 3 PR cộng đồng (#94, #98, #86, #83).
 
-### v2.16.9
-- **重构 Windows 重启器为静态纯 Node.js 脚本，消除企业杀软/EDR 高危误报特征**：
-  - 新增随包下发、受 SHA-256 校验的静态 `scripts/relaunch-worker.mjs` 与明面可见的 `scripts/relaunch-antigravity.cmd`，彻底移除重启链路中的 PowerShell、动态 `.ps1` / `.lnk` 投放、`WScript.Shell`、`-WindowStyle Hidden`、`-ExecutionPolicy Bypass`、嵌套 PowerShell、WMI 与脚本自删行为，并对任务 JSON 实施严格目标文件名、60 秒时效、参数/环境变量白名单与路径穿越校验；关闭旧进程改用单次批量 `taskkill.exe` 温和关闭加 Node 内置 `process.kill` 兜底，拉起新实例经 libuv `detached + stdio: 'ignore'` 彻底隔离 Windows Terminal ConPTY。
-  - 快捷方式修补新增纯 Node `.lnk` 字节预检，已修补或无关快捷方式零次调用 PowerShell，并清理全仓库 `-Command` 调用上无效的 `-ExecutionPolicy Bypass` 与冗余 `-WindowStyle Hidden`。
-  - 补齐真实 ACK 就绪校验与杀软拦截优雅降级：若 2.5 秒内未收到重启器就绪 ACK，自动熔断冷启动重启、立即释放前端 `switchingInProgress` 状态并提示手动重启与可复制启动命令，修复伴生页 3 秒轮询抹掉错误提示的问题。
-- **修复模型与会话峰值速度（`peakTps`）被缓冲尾包虚高的问题**：
-  - 对「`streamingMs < 1500ms` 且流式占比 `< 6%` 且输出 `>= 500` Token」的大工具调用缓冲尾包自动回退整包速度口径（兼容既有 90 天历史归档无缝修正，无需清缓存）。
-  - 概览模型表与会话/子智能体统计统一改用 `robustPeakTps`：优先在持续流请求（`>= 3s` 且 `>= 100` Token）中统计并通过 Tukey 上篱笆过滤孤立局部缓冲毛刺，同时保留真实高速 Flash 流与混合模型 Orchestrator 的按模型分组统计。
-
-### v2.16.8
-- **输入框拖入超过 20 MB 大文件自动转为原生文件引用（#46）**：保留 Antigravity 原生 20 MB 附件限制不变；仅在拖入超过 20 MB 的本地文件时拦截（不读取文件内容），将绝对路径通过原生 Lexical Mention 管道直接插入为可点击的文件引用标签（支持 Windows 盘符、UNC/NAS、POSIX、空格、`#` 与中文路径）；普通文件原样透传，混合拖拽时普通文件继续正常附加、超限文件转为引用，自动隔离侧边栏拖拽与 SSH 远端窗口。
-- **侧边栏显示菜单翻译作用域保护（吸收 PR #82，感谢 `@statertly-pixel`）**：将 `Project`、`Sort Conversations`、`Sort Projects`、`Auto Pin`、`Archived Only`、`Subtitles`、`Decorations` 等 7 个菜单词条在全部九种语言下均限定为仅在菜单/选项上下文内生效（同时覆盖文本节点与 `title`/`placeholder` 属性），避免恰好重名的会话或项目标题被误翻。
-
-### v2.16.7
-- **新增六语种原生国际化支持（共九种界面语言，吸收法语 PR #80，感谢 `@oxibys`）**：
-  - 在原有简体中文、繁體中文、English 基础上，新增法语（`Français`）、日语（`日本語`）、韩语（`한국어`）、德语（`Deutsch`）、西班牙语（`Español`）与俄语（`Русский`），完整覆盖插件面板、Antigravity 原生界面、Swarm 面板、伴生辅助页、日期选择器与系统提示。
-  - 采用按需加载的模块化语言包架构（`lib/locales/`）：窗口启动仅注入当前激活语种，设置页切换语言时经由 `i18n.pack` RPC 实时拉取，并同步支持系统语系自动初始化与分语种 `custom-i18n.json` 覆盖；同步补全九种语言的项目 README 文档。
-- **补全侧边栏排序与筛选菜单翻译（#79）**：补充 Antigravity 侧栏显示选项菜单中的 `Sort Conversations`、`Sort Projects`、`Auto Pin`、`Archived Only`、`Subtitles`、`Decorations` 及菜单作用域内的 `Project` 词条，保持普通项目名与代码块不受影响。
-- **彻底修复 Windows 11 重启后 Windows Terminal 残留及关闭窗口连带退出客户端（#61 后续，感谢 `@poneisme` 与社区反馈）**：`relaunch-antigravity.ps1` 改为通过无窗口 CUI 自身子进程（`-LaunchOnly` + `CreateNoWindow = $true`）再经 `Start-Process`（`ShellExecuteEx`，`bInheritHandles = FALSE`）拉起 `Antigravity.exe`（回退路径附加 `<NUL >NUL 2>&1`），彻底切断 Windows Terminal ConPTY 句柄继承与 `AttachConsole` 附着，且全程保持零 `-EncodedCommand` / DCOM / VBS / `conhost --headless` 杀软兼容。
-
-### v2.16.6
-- **修复侧栏运行中会话开启流光后无法点击的问题**：移除覆盖原生侧栏行子元素 `position` 的样式规则，恢复整行 `<a href>` 链接及悬停操作按钮的正常点击。
-- **优化侧栏底部流光层级与边缘渐隐**：将 `pointer-events: none` 的流光层提升至悬停操作栏上方（`z-index: 20`），消除右侧图标背景方块对光晕的硬切遮挡；新增左右两端渐隐遮罩（`.agy-sb-fade`），让流光进入与离开底边时平滑过渡。
-
-### v2.16.5
-- **修复统计偏差与历史记录丢失（#63）**：
-  - `lib/quota.mjs` 拦截归零或回退扫描写入脏检查点，估算分段跳过回退区间并保留已测进度。
-  - `lib/dashboard.mjs` 按请求所属配额池（Gemini / Claude / Argon）独立匹配各自周重置周期的上下界，避免多池重置时间不同导致跨周期多算。
-  - `lib/analytics.mjs` 新增按数据目录隔离的原子请求归档（保留 90 天、最多 20,000 条），清理旧会话 `.db` 后周统计不再断崖下跌。
-- **界面精简与原生设置补翻**：
-  - 移除输入框上下文窗口圆环、子智能体圆环与速度统计触发按钮上的冗余悬浮提示（保留 `aria-label`），展开弹窗时不再遮挡内容。
-  - 精简概览「费用」卡片与模型表头：移除长悬浮提示、估算口径副标题与表头虚线，仅保留金额与单次均价。
-  - 补齐 5 处 Antigravity 2.35.2 原生设置词条（`Search shortcuts...`、`Settings for conversations outside of projects`、`Hide breakdown`、`Notification settings`、`Automatic check for updates`）及繁体中文映射与输入框 `placeholder` 还原。
-- **社区 PR 合并与优化**：
-  - **本地字体与字重选择（PR #78，感谢 `@awei84`）**：采用单排原生下拉选择本机字体与字重，通过 OpenType `name` 表与内置映射自动显示中文字体名并支持中英文混合搜索；字重列表仅展示所选字体实际拥有的字重（默认或单字重字体自动灰显禁用），并隔离图标字体与终端。
-  - **侧栏运行中底部流光与「进行中」置顶监控分组（PR #76，感谢 `@whitzard0421`）**：均默认关闭；流光采用纯 CSS 底部左向右柔光滑动与 1px 微光边线（零 WebGL 占用、遵循减少动态效果偏好），「进行中」分组复用原生侧栏排版。
-  - **拖拽文件夹到侧栏新建项目（PR #73，感谢 `@niuanhua-ydy`）**：支持将本地文件夹直接拖放至侧栏创建项目，包含目录与符号链接校验及 SSH 远端窗口隔离。
-  - **每轮回复底部统计（PR #65，感谢 `@wwwsideexiecom-boop`）**：默认关闭；开启后在回复底部及悬浮明细中显示模型、缓存命中率、输入输出 Token 与当前轮次估算费用。
-
-### v2.16.4
-- **修复 Windows 重启闪黑框与进程会话继承（#61）**：重启脚本改用 `ProcessStartInfo`（`UseShellExecute = $false`、`CreateNoWindow = $true`）拉起 `Antigravity.exe`，避免新实例继承 PowerShell 控制台会话。
-- **修复 macOS 大体积 OAuth 凭据写入超限并避免密文进入命令行（#75）**：当 `/usr/bin/security -i` 的十六进制命令接近 4096 字节行缓冲上限时，改用 `/usr/bin/osascript -l JavaScript` 通过标准输入调用 `Security.framework`（`SecItemUpdate` / `SecItemAdd` 并配置 `/usr/bin/security` 访问控制列表），所有大小的凭据均不出现在 `argv` 中。
-- **降低长会话轮询的解析与传输开销（#62）**：伴生进程按文件指纹（含 `task.md`）、完整执行态、费率与设置缓存解析结果，前端携带 `knownRev` 且状态未变化时直接返回 `{ unchanged: true, stateRev }`，运行中阶段计时改由前端按 `phaseStartedAtMs` 本地推进。
-- **修复 macOS 冷启动自动重启冷却残留与并发竞态（#64）**：调试端口与代理就绪后清空冷却时间戳并增加代理启动重试；统一冷启动代理探测与缺失调试端口两条路径的协调锁，避免同时调度两次重启。
-- **修复原位编辑快捷键与状态恢复问题（#70）**：尊重宿主 `sendWithModEnter` 偏好（开启组合键发送时放行普通 Enter 换行，支持 `Cmd/Ctrl+Enter` 提交），优化编辑横幅样式，外部窗口启动会话时归位输入框并恢复编辑前草稿及附件。
-- **消除切换会话时备用目录浮层闪烁（#74）**：切换会话后为原生 `conversation-navigator` 挂载留出 220 ms 宽限期，原生目录出现后不再闪烁显示 `.pt-outline`。
-- **支持自定义汉化词典、补全 2.35 命令说明并按系统语言初始化（#68、#69）**：支持读取 `plugin_data/agy-powertools/custom-i18n.json` 补充未覆盖词条，补齐 2.35 新增的 10 个斜杠命令说明；首次启动按操作系统语言（兼容 BCP-47 与 POSIX 下划线格式）选择默认界面语言，重置设置通过后端 `settings.reset` 保持系统默认语言。
-- **社区 PR 合并**：
-  - **SSH 远端窗口早期启动恢复（PR #67，关闭 #66，感谢 `@qimengdunjia`）**：容忍早期启动时 `service()` 尚未挂载并在配置变更后重跑 `applyOptions()`。
-  - **合并 Antigravity CLI 统计与 Argon 独立额度池（PR #71，感谢 `@zhangyu-ch`）**：自动合并 `~/.gemini/antigravity-cli/conversations/*.db` 至看板统计，自愈旧配额检查点并分离 `argon` 额度池。
-  - **管理页顶栏与筛选栏滚动吸顶（PR #72，感谢 `@niuanhua-ydy`）**：为 Powertools 管理页顶栏与筛选栏增加滚动吸顶与分隔线。
-
-### v2.16.3
-- **修复 Windows 免 TUN 代理重启被杀软拦截（#53）**：移除 `-EncodedCommand`、`ShellWindows` DCOM、`CreateProcessW` 与 `.vbs`，改为使用普通 `-File` 脚本在插件数据目录内生成临时 `.lnk` 并通过 `explorer.exe` 拉起（执行后自动删除 `.lnk`、`.ack` 与 `.ps1`），避免 Windows Defender AMSI 与火绒拦截；启用代理时校验新进程命令行包含 `--proxy-server=`。
-- **修复多账号切换后重复弹出条款确认框（#59）**：记录已完成登录条款确认的账号及其 `isGcpTos` 状态，切号重启在旧进程退出后、新进程启动前原子同步 `app_storage.json` 的 `agy.onboarding.lastLoginUsername` 与 `agy.onboarding.lastLoginIsGcpTos`（首次新增账号仍保留条款确认）。
-- **新增自动检查更新、轻量提醒与可选空闲热更新（#45）**：在「关于」区块增加「启动时自动检查更新」（默认开启，每 12 小时检查一次并在 Antigravity 客户端升级时检查已适配更新）与「空闲时自动热更新」（默认关闭，仅同大版本且会话空闲时执行）；发现新版本时在侧栏 `Powertools` 显示「新版」徽标（跟随客户端强调色，点击直达设置页更新区）、标题栏快捷入口显示状态点，并在右下角弹出原生样式提示卡。
-- **补全原生 Skills 与 Customizations 界面汉化（#60）**：补充 Antigravity 2.35.1 中 Skills、Customizations、市场与 MCP 管理界面的未翻译英文词条及繁体中文映射。
-
-### v2.16.2
-- **修复长对话周期性卡顿与 Windows 输入法闪烁（#51）**：输入框圆环与轮询状态改用原始值签名去重，历史已完成回复改为 O(1) 索引值校验，补充滚动防抖与空闲态 6 秒轮询退避。
-- **修复重启后首个会话原位编辑消息未回退（#58）**：在原位编辑容器上增加捕获阶段 `Enter` 与发送按钮拦截，直接回退、归位输入框并重发。
-- **修复界面汉化误翻代码与 Diff 视图（#55）**：汉化排除列表补充 Monaco 编辑器、Diff 视图与代码块容器。
-- **修复 SSH 远端窗口多账号显示问题（#57）**：SSH 窗口隔离本地多账号列表、恢复原生设置入口并跳过本地同步；本地窗口优先匹配实时登录邮箱。
-- **添加账号支持复制 Google 登录链接（#56）**：登录期间在弹窗内展示原始 OAuth 链接，支持复制与取消登录。
-- **冷重启与自动切号边界加固（PR #52，感谢 `@Hi-Jiajun`）**：POSIX 重启残留进程升级 `SIGKILL` 清理并解析 Linux 软链真实路径；未开插件代理时保留用户系统代理环境变量；修正切号状态锁重置与顺延切号分组保留。
-
-### v2.16.1
-- **免 TUN 代理冷启动自动重启**：伴生进程启动时检测已配置但未生效的独立代理，端口可达时自动带代理参数重启一次（内置冷却与熔断保护），并在辅助面板提供手动重启按钮。
-- **修复 SSH 概览页默认筛选为 0（#49）**：SSH 远端模式不套用本地账号筛选；本地账号无归属记录时回退为全部账号。
-- **回复复制按钮仅复制最终回答（#50）**：拦截回复底部复制按钮，过滤中间阶段汇报与工具摘要，仅复制最终回答正文。
-- **`/compact` 压缩后即时显示占比估算（#48）**：检测到已完成的 `CHECKPOINT` 节点后估算压缩占比并在圆环与详情浮窗显示，下次请求后校准。
-- **多账号自动切号守卫增强（PR #42，感谢 `@Hi-Jiajun`）**：补充模型兼容性校验、跨标签页运行中任务检测、交互式倒计时横幅以及周限额已激活账号优先排序。
-
-### v2.16.0
-- **任务进度 3D 粒子球与界面整理**：右侧任务进度换用 128 粒子单色 3D 粒子球；「价格」页精简为「正式标准价 / 含 API 优惠」双口径（PR #39）；移除子智能体 32 条统计上限（PR #41）；Tooltip 改为跟随主题的自定义浮层（PR #43）；支持聊天图片右键引用/复制/保存（#40）。
-- **更新包精简与代理下载**：打包排除 `docs/images/`，热更新压缩包由 4.97 MB 降至约 540 KB；支持通过 HTTP/SOCKS5 代理检查与下载更新（#44），修复升级后「更新完成」状态残留（#47）。
-
-### v2.15.5
-- **macOS 告别双 `.app` 图标，改为冷启动自动重启启用**：
-  - 不再创建冗余的 `~/Applications/Antigravity (Powertools).app`（老用户升级或覆盖安装时自动清理旧启动器），全程直接使用原版 `/Applications/Antigravity.app`。
-  - 正常打开原版 Antigravity 时若未检测到调试端口，自动带 `--remote-debugging-port=0` 优雅退出并重启一次（移除 `osascript` 避免系统自动化权限弹窗；内置同会话防重、120 秒冷却与连续 2 次失败熔断保护）。
-  - 在 **Powertools -> 设置**（仅 macOS 显示）以及右侧原生 **插件 -> Powertools** 面板均提供「冷启动自动重启启用（macOS）」开关与手动「立即重启启用」按钮，随时可切回手动重启。
-
-### v2.15.4
-- **修复长对话触屏拖动卡顿与 Windows 输入法悬浮栏闪烁（#37）**：给 `<html>` 样式变量加脏检查避免整页重算，给 `renderRoot` 加渲染签名跳过未变化的历史轮次重渲染，对已完成历史回复走 `WeakMap` O(1) 缓存并缓存输入框 flex 父节点；监听跳过 `[contenteditable]` 与 `[data-markdown-root]` 并在触屏拖动与输入法组合期间自动延迟挂载，同步优化 `native-i18n.js` 流式 `characterData` 过滤与节流清理。
-- **修复流式请求速度计算偏差（#36）**：正常流式输出（`streamingMs >= 500ms` 且 `outputTokens >= 20`）改为按纯流式输出速度计算，避免长首字延迟（TTFT）把真实生成速度拉低；短尾缓冲响应仍自动回退端到端总耗时防虚高，并在请求表「速度 / 延迟」列补齐悬停拆解。
-- **概览首屏加速与等高微光骨架屏**：解耦本地 SQLite 看板读取与远程额度接口，不再因远程网络等待卡住首屏；首次冷打开概览与事件表时以等高微光骨架屏替代假 `0` 与「暂无请求」。
-- **标题栏快捷入口状态明细与首次提醒浮卡（#38，感谢 `@Hi-Jiajun`）**：低额度或代理待重启时，悬停顶栏图标以多行 Tooltip 展示具体原因，首次触发时弹出可关闭提醒浮卡（支持「我知道了」与「不再提醒 / 设置恢复」）。
-- **SSH Host 弹窗支持粘贴连接命令（#33，感谢 `@wangbingnan136`）**：粘贴 `ssh -p 2222 user@host` 自动提取并填入 `user@host:2222`，自动丢弃附带密码，开关归并至「会话增强」。
-
-### v2.15.3
-- **修复 Windows 下含空格路径「打开所在文件夹」跳回「文档」的问题**：统一将 Windows 资源管理器 `reveal` 传参改为 `/select,"路径"` 搭配 `windowsVerbatimArguments: true`（同步修复右键「打开所在文件夹」和「打开方式 > 文件资源管理器」，并兼容盘符根目录直开），不影响 macOS 与 Linux。
-
-### v2.15.2
-- **新增「工作时输入框流光」（默认关闭，灵感来自 [border-beam-ios](https://github.com/ismnoiet/border-beam-ios)）**：
-  - 基于圆角矩形 SDF 与周长弧长参数化的轻量 WebGL 着色器，Agent 工作时沿输入框边缘匀速平滑旋转彗星流光与柔和内泛光，结束时丝滑淡出并停止渲染（空闲零 CPU/GPU 占用，兼容减弱动态效果与无 WebGL 降级）。
-  - 与「输入框额度光环」同时开启时自动交叉渐变接管：工作时额度光环完全隐去不打架，结束后流光淡出、额度环浮回。
-  - 在 **Powertools -> 设置 -> 统计与进度** 开启后展开 6 套色板（`Gemini`、`极光`、`炫彩`、`霓虹`、`主题色`、`额度色`）及「试用预览」按钮，可随时在任意会话上即时试看效果与挑色板。
-
-### v2.15.1
-- **新增标题栏快捷概览浮窗（默认关闭，致谢 `@Hi-Jiajun` 在 #32 贡献的交互思路与顶栏挂载方案）**：在 **Powertools -> 设置 -> 统计与进度** 中开启「标题栏快捷概览」后，会在窗口右上角「更多操作」左侧显示快捷入口（带低额度/代理待重启小圆点），点击即可在当前会话上方直接复用完整 6 页签面板，无需切离对话。
-- **「关于」区块精简重构**：将项目链接、`v2.15.1` 版本胶囊与版本检查收进同一个紧凑单行卡片，单个按钮原地完成检查、旋转加载、已是最新确认（零高度抖动）及安装更新全流程。
-
-### v2.15.0
-- **增强原生放大镜搜索支持全文检索（致谢 `@wangbingnan136` 在 #24 贡献的检索引擎）**：在顶部原生「会话」搜索框输入关键词时，直接于弹窗底部无缝呈现本地与 SSH 远端历史对话正文、代码块及终端命令匹配（支持 `全部 / 正文 / 代码与命令` 筛选、一键复制与点击直达对应轮次，空输入保持原版零改动）。
-- **文件右键菜单新增「打开方式 >」动态子菜单（含 `#L:C` 行列号定位）**：自动探测本机已安装的代码编辑器、IDE 与终端（VS Code、Cursor、Windsurf、Visual Studio、JetBrains、Zed、Antigravity、Windows Terminal、Git Bash、WSL 等），无需在设置里额外配置；同时修复 Windows 盘符 `%3A` 编码 URI 解析失败的问题，并加固 `.cmd` 批处理字符拦截。
-- **多账号额度刷新与展示准确性修复（#28，感谢 `@Hi-Jiajun`）**：引入单调请求序号防并发覆盖与 `.db/-wal` 增量事件缓存消除扫描卡顿，统一顶部卡片与列表实时数据源，过滤未消耗 `100%` 占位倒计时，非活跃账号过期估算改为 `≈` 区分并在周限额预警时并排提示。
-- **界面细节修复与优化**：
-  - 用户消息气泡着色新增 `10%-100%` 混合强度滑条（拉满即实色）并在高饱和度下自动适配文字对比度（#27）。
-  - 修复 macOS 下概览「当前额度」`5h 100%` 折行问题（#25），并合并原生 `Worked for` 与插件「用时」消除重复折叠头及多段英文残留（#29）。
-  - 将界面翻译中的「支线提问」统一调整为「侧边对话」。
-
-### v2.14.3
-- **适配 Antigravity 2.35.0**：更新原生弹出层内容组件（`JC`）绑定特征以兼容 2.35.0（同时保持向后兼容 2.34.0），恢复所有原生面板与浮窗挂载。
-- **补全 2.35.0 界面汉化**：同步适配 2.35.0 中改为句首大写的设置项标题、新增说明文案及 `Load older messages`、`Delete Permanently`、`Return to Inbox` 等菜单项。
-
-### v2.14.2
-- **修复多账号「添加账号」热登录后未重启导致约 50 分钟回退旧账号并污染凭据槽的问题（#22、#23，感谢 `@Hi-Jiajun` 的根因排查与 PR）**：
-  - 跨平台凭据库（Linux / macOS / Windows / WSL2）新增 `id_token_email` 归属校验，读写备份槽和同步额度前先核对邮箱，拦截跨号覆写与额度串号（对非 JSON 历史凭据自动降级兼容）。
-  - 「添加账号」完成同步后新增 `accounts.completeAdd`，在检测到账号变更或令牌轮换时写入 `pendingSwitch` 防覆盖锁并触发受控重启以清除旧 `TokenSource`（重启不可用时优雅降级为手动重启提示，取消登录不触发重启）。
-
-### v2.14.1
-- **修复子智能体或后台任务运行中「任务进度」误显已完成的问题**：主会话挂起等待子智能体或非守护后台任务完成时保持运行状态，并细分为「子智能体运行中」和「等待后台任务完成」阶段（常驻守护进程仍正常结束）；同步支持同轮内 `SYSTEM_MESSAGE` 唤醒后的实时状态识别，以及未读角标与自动切号判定对齐。
-- **补全 Swarm 面板汉化**：补充非会话页引导语、蜂巢图例、成员与动态计数、任务完成度、导出进度与动态 tooltip 翻译（保留主界面 `Swarm` 入口原文与正文保护）。
-
-### v2.14.0
-- **支持 Windows Antigravity + WSL2 后端模式（#21，感谢 `@Hopeless` 的方案设计与真机测试）**：
-  - 自动识别 WSL2 并定位 Windows 侧 `%APPDATA%\Antigravity\DevToolsActivePort`；优先直连 `127.0.0.1`（兼容 Mirrored），默认 NAT 下自动通过 Windows `node.exe` / `agy-node.exe` 建立 TCP-over-stdio 桥接。
-  - 新增 `vault.probe()` 探测并透出真实报错原因；WSL2 下活跃态成对读写 `0600` 凭据文件，备份槽位存入 Windows 凭据管理器并按 `agy-powertools:wsl:<distro>:account:<id>` 隔离。
-  - WSL2 下委托 Windows `powershell.exe` 维护 `.lnk` 快捷方式与重启 `Antigravity.exe`；切号后若自动重启失败提示手动重启；sidecar 启动时自动清理已退出 PID 的旧运行态文件。
-
-### v2.13.9
-- **文件右键菜单支持 Windows 局域网 NAS / SMB 路径**：在触碰 SMB 前校验字面量 IP 或通过系统 `dns.lookup` 核验所有解析 IP 均为非公网地址（覆盖局域网 IP、NetBIOS 短名、内网域名、Tailscale / VPN 私网与 `*.localhost` / `wsl$`），同时继续拦截公网主机；修复含空格 UNC 路径在 `explorer.exe /select` 下的定位。
-
-### v2.13.8
-- 修复输入框额度光环在新建会话页套住顶部项目/分支栏的问题，改为只挂载在输入卡片上。
-- 新增「光环额度周期」选项，支持在 `自动（较低项）`、`周限额` 和 `5 小时限额` 间切换。
-- 修复设置页更新说明未解析 Markdown 格式的问题。
-
-### v2.13.7
-- 新增「概览显示账号额度」与「输入框额度光环」（#18，默认关闭），并将右侧「任务进度」与「当前额度」改为可折叠样式。
-- 多设备混用周限额估算改为增量快照校准，剔除无本机请求的跨设备消耗（#19）。
-- 移除 Windows 隐藏 PowerShell 任务栏闪烁调用，消除杀软误报，同时停用遗留 `hooks.json` 钩子（#20）。
-- 补全侧栏项目右键菜单、权限审批弹窗以及 `Thought for Xs`、`Step X of Y` 等高频翻译。
-
-<details>
-<summary>查看早期版本（v2.10.0 - v2.13.6）</summary>
-
-- **v2.13.6**：精简右侧「任务进度」面板（合并实时阶段、连接线时间轴、单步耗时与右对齐计时），补全 Orchestrator 说明翻译。
-- **v2.13.5**：新增可选用户消息气泡着色，收窄请求表列宽，修复路径含 `#` 的文件链接无法打开的问题，补全 2.34.0 界面与弹窗翻译。
-- **v2.13.4**：概览默认使用「本轮周限额内用量」（#12），支持 OpenSSH 远程窗口统计（#14），多账号额度隔离与按账号筛选（#9、#11），文件右键支持引用图片与文件，Swarm 面板汉化（#10），修复 `/btw` 分屏统计与瞬时超时误报（#15）。
-- **v2.13.3**：支持含子智能体会话的完整分支，macOS 启动器复用原版图标与 Dock 替换指引（#7、#8），补全 2.34.0 菜单翻译。
-- **v2.13.2**：概览与请求页新增缓存命中率与短间隔缓存异常标红（#6），新增繁體中文（`zh-TW`），适配 2.34.0 Orchestrator 与动态 Claude 定价解析。
-- **v2.13.1**：新增子智能体上下文与统计、任务进度实时阶段提示、概览「今天」范围与辅助面板备用更新通道。
-- **v2.13.0**：适配 Antigravity 2.34.0，新增多账号切换与免 TUN 独立代理，修复原位编辑切会话丢失与已安装插件页徽章变形（#5）。
-- **v2.12.0 - v2.12.10**：应用内校验更新、组件声明缓存、原位消息编辑、任务栏未读数、上下文/速度双浮窗、本地文件右键菜单（#2）、项目默认会话数与多窗格修复（#1、#3、#4）。
-- **v2.10.0 - v2.11.0**：适配 Antigravity 2.32.x 渲染器，重绘 Token 与费用双圆环及全局总开关。
-
-</details>
+Xem toàn bộ lịch sử phiên bản đầy đủ tại [README_EN.md](README_EN.md#changelog).
 
 ---
 
-## 协议与链接
+## Giấy phép & liên kết
 
-- **开源协议**：[MIT License](LICENSE)（日期范围日历交互改编自 HextaUI，基于 `react-day-picker` 与 `date-fns`，许可见 [lib/vendor/NOTICE.txt](lib/vendor/NOTICE.txt)）
-- **问题反馈**：[GitHub Issues](https://github.com/WhiteBr1ck/agy-powertools/issues)（提交时请附上操作系统、Antigravity 版本和插件版本）
-- **友情链接**：[LINUX DO](https://linux.do/) - 新的理想型社区
+- **Mã nguồn gốc**: [WhiteBr1ck/agy-powertools](https://github.com/WhiteBr1ck/agy-powertools)
+- **Giấy phép**: [MIT License](LICENSE) (lịch chọn khoảng ngày tùy biến từ HextaUI dùng `react-day-picker` và `date-fns`; xem [lib/vendor/NOTICE.txt](lib/vendor/NOTICE.txt))
+- **Báo lỗi**: [GitHub Issues (Upstream)](https://github.com/WhiteBr1ck/agy-powertools/issues)
